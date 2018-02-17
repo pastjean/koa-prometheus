@@ -66,7 +66,7 @@ app.use(koaPrometheus.instrumentDurationHandler(httpRequestDurationSeconds))
 
 MIT
 
-[npm-image]: https://img.shields.io/npm/v/koa-prometheus.svg?style=flat-square
-[npm-url]: https://www.npmjs.com/package/koa-prometheus
+[npm-image]: https://img.shields.io/npm/v/koa-prometheus-adv.svg?style=flat-square
+[npm-url]: https://www.npmjs.com/package/koa-prometheus-adv
 [travis-image]: https://img.shields.io/pastjean/koa-prometheus/koa/master.svg?style=flat-square
 [travis-url]: https://travis-ci.org/pastjean/koa-prometheus

@@ -7,5 +7,11 @@
   },
   "author": "Pierre-Alexandre St-Jean",
   "license": "MIT",
-  "main": "index.js"
+  "main": "index.js",
+  "keywords": [
+    "koa",
+    "koajs",
+    "prometheus",
+    "monitoring"
+  ]
 }

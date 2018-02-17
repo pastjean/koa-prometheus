@@ -1,10 +1,16 @@
 # koa-prometheus
 
-## Usage
+[![NPM version][npm-image]][npm-url]
+[![build status][travis-image]][travis-url]
+
+## Installation
 
 ```sh
 npm install -i koa-prometheus prom-client
 ```
+## Usage
+
+Complete example 😀
 
 ```js
 const koa = require('koa');
@@ -55,3 +61,12 @@ app.use(koaPrometheus.instrumentDurationHandler(httpRequestDurationSeconds))
         ctx.body = 'hello prometheus';
     })
 ```
+
+# License 
+
+MIT
+
+[npm-image]: https://img.shields.io/npm/v/koa-prometheus.svg?style=flat-square
+[npm-url]: https://www.npmjs.com/package/koa-prometheus
+[travis-image]: https://img.shields.io/pastjean/koa-prometheus/koa/master.svg?style=flat-square
+[travis-url]: https://travis-ci.org/pastjean/koa-prometheus

@@ -1,0 +1,11 @@
+{
+  "name": "koa-prometheus",
+  "version": "1.0.0",
+  "description": "Prometheus integration for koa",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pierre-Alexandre St-Jean",
+  "license": "MIT",
+  "main": "index.js"
+}

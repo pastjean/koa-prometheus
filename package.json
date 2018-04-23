@@ -4,11 +4,13 @@
   "description": "Prometheus integration for koa",
   "scripts": {
     "build": "tsc",
-    "start": "tsc --watch"
+    "start": "tsc --watch",
+    "prepublishOnly": "tsc"
   },
   "author": "Pierre-Alexandre St-Jean",
   "license": "MIT",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "keywords": [
     "koa",
     "koajs",
@@ -16,9 +18,11 @@
     "monitoring"
   ],
   "dependencies": {
-    "@types/koa": "^2.0.45",
     "koa": "^2.5.0",
     "prom-client": "^11.0.0",
     "typescript": "^2.8.3"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.0.45"
   }
 }

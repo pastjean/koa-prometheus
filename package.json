@@ -1,6 +1,6 @@
 {
-  "name": "koa-prometheus",
-  "version": "0.1.0",
+  "name": "koa-prometheus-adv",
+  "version": "1.0.0",
   "description": "Prometheus integration for koa",
   "scripts": {
     "build": "tsc",
@@ -14,15 +14,18 @@
   "keywords": [
     "koa",
     "koajs",
+    "metrics",
     "prometheus",
-    "monitoring"
+    "monitoring",
+    "prom-client",
+    "prom"
   ],
   "dependencies": {
-    "koa": "^2.5.0",
-    "prom-client": "^11.0.0",
-    "typescript": "^2.8.3"
+    "prom-client": "^11.0.0"
   },
   "devDependencies": {
+    "typescript": "^2.8.3",
+    "koa": "^2.5.0",
     "@types/koa": "^2.0.45"
   },
   "files": [

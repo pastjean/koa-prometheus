@@ -15,10 +15,9 @@ Complete example 😀
 ```js
 const koa = require('koa');
 const prom = require('prom-client');
-const koaPrometheus = require('koa-prometheus');
+const koaPrometheus = require('koa-prometheus-adv');
 
 const app = new Koa();
-
 
 app.use(koaPrometheus.DefaultHTTPMetricsInjector(prom.registry))
     .use(async (ctx) => {

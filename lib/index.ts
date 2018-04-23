@@ -5,6 +5,16 @@ import * as prometheus from 'prom-client'
 export const CODE_LABEL = 'code'
 export const METHOD_LABEL = 'method'
 
+// Hack because 'prom-client' d.ts is missing "labelNames"
+class Counter extends prometheus.Counter {
+    labelNames: string[];
+}
+
+// Hack because 'prom-client' d.ts is missing "labelNames"
+class Histogram extends prometheus.Histogram {
+    labelNames: string[];
+}
+
 function checkLabels(labelNames: string[]) {
     return {
         hasCode: labelNames.includes(CODE_LABEL),
@@ -36,14 +46,14 @@ export function metricsHandler(register: prometheus.Registry): Koa.Middleware {
 }
 
 export function instrumentCountHandler(counter: prometheus.Counter): Koa.Middleware {
-    const {hasCode} = checkLabels((counter as any).labelNames)
+    const {hasCode} = checkLabels((counter as Counter).labelNames)
 
     return async (ctx, next) => {
         try {
             await next()
         } finally {
             const labels = hasCode
-                ? getRequestLabels(ctx, (counter as any).labelNames)
+                ? getRequestLabels(ctx, (counter as Counter).labelNames)
                 : {}
             counter.inc(labels)
         }
@@ -51,7 +61,7 @@ export function instrumentCountHandler(counter: prometheus.Counter): Koa.Middlew
 }
 
 export function instrumentDurationHandler(histogram: prometheus.Histogram): Koa.Middleware {
-    const {hasCode} = checkLabels((histogram as any).labelNames)
+    const {hasCode} = checkLabels((histogram as Histogram).labelNames)
 
     return async (ctx, next) => {
         const end = histogram.startTimer()
@@ -59,7 +69,7 @@ export function instrumentDurationHandler(histogram: prometheus.Histogram): Koa.
             await next()
         } finally {
             const labels = hasCode
-                ? getRequestLabels(ctx, (histogram as any).labelNames)
+                ? getRequestLabels(ctx, (histogram as Histogram).labelNames)
                 : {}
             end(labels)
         }

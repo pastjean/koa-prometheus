@@ -24,5 +24,8 @@
   },
   "devDependencies": {
     "@types/koa": "^2.0.45"
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }

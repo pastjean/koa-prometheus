@@ -5,7 +5,7 @@ import * as prometheus from 'prom-client'
 export const CODE_LABEL = 'code'
 export const METHOD_LABEL = 'method'
 
-interface LabeledPrometheusMetric {
+export interface LabeledPrometheusMetric {
     labelNames?: string[]
 }
 

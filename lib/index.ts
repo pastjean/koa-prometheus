@@ -1,5 +1,4 @@
 import * as Koa from 'koa'
-import * as koaCompose from 'koa-compose'
 import * as prometheus from 'prom-client'
 
 export const CODE_LABEL = 'code'
@@ -101,11 +100,13 @@ export function instrumentInFlightHandler(gauge: prometheus.Gauge): Koa.Middlewa
 export function metricsInjector(httpRequestDurationSeconds: prometheus.Histogram,
                                 httpRequestTotal: prometheus.Counter,
                                 httpRequestInflight: prometheus.Gauge): Koa.Middleware {
-    return koaCompose([
-        instrumentDurationHandler(httpRequestDurationSeconds),
-        instrumentCountHandler(httpRequestTotal),
-        instrumentInFlightHandler(httpRequestInflight)
-    ])
+    return async (ctx, next) => {
+        return instrumentDurationHandler(httpRequestDurationSeconds)(ctx,() => {
+            return instrumentCountHandler(httpRequestTotal)(ctx, () => {
+                return instrumentInFlightHandler(httpRequestInflight)(ctx,next) 
+            })
+        })        
+    }
 }
 
 export function DefaultHTTPMetricsInjector(registry: prometheus.Registry, prefix: string = 'http'): Koa.Middleware {

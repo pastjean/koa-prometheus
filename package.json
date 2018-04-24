@@ -1,6 +1,6 @@
 {
   "name": "koa-prometheus-adv",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Prometheus integration for koa",
   "scripts": {
     "build": "tsc",
@@ -11,6 +11,10 @@
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pastjean/koa-prometheus.git"
+  },
   "keywords": [
     "koa",
     "koajs",

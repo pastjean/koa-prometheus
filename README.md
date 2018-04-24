@@ -6,7 +6,7 @@
 ## Installation
 
 ```sh
-npm install -i koa-prometheus prom-client
+npm install -i koa-prometheus-adv prom-client
 ```
 ## Usage
 
